@@ -1,0 +1,33 @@
+CREATE DATABASE gestion_donnees;
+USE gestion_donnees;
+CREATE TABLE equipes (
+    equipeID INT PRIMARY KEY,
+    nomEquipe VARCHAR(50) NOT NULL,
+    dateCreation DATE
+);
+CREATE TABLE membresdupersonnel (
+    MembreID INT PRIMARY KEY,
+    Nom VARCHAR(50) NOT NULL,
+    Prenom VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Telephone VARCHAR(15) UNIQUE,
+    Role VARCHAR(50),
+    EquipeID INT,
+    Statut VARCHAR (50),
+    FOREIGN KEY (EquipeID) REFERENCES equipes(EquipeID)
+);
+
+INSERT INTO equipes (equipeID, nomEquipe, dateCreation)
+VALUES
+    (1, 'Equipe A', '2023-11-15'),
+    (2, 'Equipe B', '2023-11-16'),
+    (3, 'Equipe C', '2023-11-17');
+
+INSERT INTO membresdupersonnel (MembreID, Nom, Prenom, Email, Telephone, Role, EquipeID, Statut)
+VALUES
+    (1, 'Dupont', 'Jean', 'jean.dupont@example.com', '123456789', 'Developpeur', 1, 'Actif'),
+    (2, 'Leroux', 'Emilie', 'emilie.leroux@example.com', '987654321', 'Analyste', 2, 'Actif'),
+    (3, 'Garcia', 'Pierre', 'pierre.garcia@example.com', '555666777', 'Chef de Projet', 1, 'Inactif'),
+    (4, 'Martin', 'Sophie', 'shophie.martin@example.com', '1112233444', 'Designer', 3, 'Actif'),
+    (5, 'Dubois', 'Thomas', 'pierre.garcia@example.com', '9998887777', 'Testeur', 2, 'Inactif'),
+    (6, 'Roy', 'Isabelle', 'isabelle.roy@example.com', '2223334444', 'Chef de projet', 3, 'Actif');
