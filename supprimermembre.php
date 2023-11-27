@@ -1,10 +1,10 @@
 <?php 
-    include 'index.php';
+    include 'connection.php';
     if (isset($_GET['supprimerID'])){
         $id=$_GET['supprimerID'];
 
-        $sql = "DELETE FROM membresdupersonnel WHERE MembreID = '$id'";
-        $result = mysqli_query($index,$sql);
+        $table = "DELETE FROM membresdupersonnel WHERE MembreID = '$id'";
+        $result = mysqli_query($sql,$table);
         if ($result) {
             echo "Deleted Successfully";
         }else{
@@ -12,3 +12,5 @@
             // die(mysql_error($index));
         }
     }
+    include 'index.php';
+?>
