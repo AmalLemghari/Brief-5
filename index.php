@@ -7,21 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "gestion_donnees";
-
-        // Connexion
-        $sql = mysqli_connect($servername, $username, $password, $database);
-
-        // Vérifier la connexion
-        if (!$sql) {
-            die("Connection failed: " . mysqli_connect_error());
-        } else {
-                echo "Connection successful";
-    }
-        
+    include 'connection.php';
     ?>
 
 </head>
@@ -173,9 +159,9 @@
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
                     <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Équipe </span> 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Tableau </span> 
                     </h1>
-                    <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Une liste de tous les équipes de votre compte, y compris leur id, nom, date de création.</p>
+                    <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Une liste de tous les équipes et les membres du personnel de votre compte.</p>
                 </div>
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                     <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Ajouter</button>
@@ -212,7 +198,7 @@
                                         Role
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Equipe
+                                        ID Équipe
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Statut
@@ -224,7 +210,10 @@
                                         Date de Creation
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Action
+                                        Modification
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Suppression
                                     </th>
                                 </tr>
                             </thead>
@@ -262,5 +251,5 @@
 
 <?php
 // Fermer la connexion
-    mysqli_close($sql);
+    // mysqli_close($sql);
 ?>
